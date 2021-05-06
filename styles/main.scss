@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+$bgColor: #000;
+$textH: #fff;
+$gradient: linear-gradient(180deg, #fc5296 0%, #f67062 74%); ;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $bgColor;
+    color: $textH;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    position: relative;
+    top: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .name{
+        font-size: 10rem;
+        font-weight: 700;
+        background: $gradient;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+    }
+
+    #time{
+        font-size: 2rem;
+
+        .blink{
+            animation: blink 1s linear infinite;
+
+            @keyframes blink {
+                0%, 100%{
+                    opacity: 1;
+                }
+                50%{
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    .battery{
+        .battery_icon{
+            margin-top: 1rem;
+            width: 90px;
+            height: 40px;
+            border: 1px solid $textH;
+            border-radius: 6px;
+            position: relative;
+
+            &::after{
+                content: '';
+                position: absolute;
+                height: 15px;
+                width: 6px;
+                top: 12px;
+                right: -11px;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                background: $textH;
+            }
+
+            #battery_icon_width{
+                position: absolute;
+                top: 10%;
+                left: 5%;
+                height: 80%;
+                width: 90%;
+                border-radius: 3px;
+                background: $gradient;
+            }
+        }
+        #battery_level{
+            margin-top: 5px;
+            text-align: center;
+        }
+    }
+}
