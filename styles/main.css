@@ -10,7 +10,12 @@ body {
   background-color: #000;
   color: #fff;
   height: 100vh;
+  overflow: hidden;
   font-family: 'Roboto', sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .container {
@@ -68,6 +73,10 @@ body {
   }
 }
 
+.container .battery {
+  text-align: center;
+}
+
 .container .battery .battery_icon {
   margin-top: 1rem;
   width: 90px;
@@ -102,6 +111,108 @@ body {
 
 .container .battery #battery_level {
   margin-top: 5px;
-  text-align: center;
+}
+
+.container .battery #time_left {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin: 0.25rem 0;
+  display: none;
+}
+
+.container .charging_animation {
+  display: none;
+  width: 15vh;
+  height: 35vh;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container .charging_animation .charging_bubble {
+  border-radius: 50%;
+  background: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
+  -webkit-box-shadow: 0px 0px 2px #5aff15, 0px 0px 10px #5aff15;
+          box-shadow: 0px 0px 2px #5aff15, 0px 0px 10px #5aff15;
+  position: absolute;
+  -webkit-animation: bubble 10s linear infinite, sideWays 2s ease-in-out infinite alternate;
+          animation: bubble 10s linear infinite, sideWays 2s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes bubble {
+  0% {
+    margin-top: 40vh;
+  }
+  100% {
+    margin-top: -40vh;
+  }
+}
+
+@keyframes bubble {
+  0% {
+    margin-top: 40vh;
+  }
+  100% {
+    margin-top: -40vh;
+  }
+}
+
+@-webkit-keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+
+@keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+
+.container .charging_animation .start {
+  width: 15vh;
+  height: 5vw;
+  background: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+  border-top-left-radius: 15vh;
+  border-top-right-radius: 15vh;
+  position: absolute;
+  bottom: 0vh;
+}
+
+.charging .container .name {
+  background: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.charging .container .battery .battery_icon {
+  -webkit-box-shadow: inset 0px 0px 15px #00b712, 0px 0px 15px #5aff15;
+          box-shadow: inset 0px 0px 15px #00b712, 0px 0px 15px #5aff15;
+}
+
+.charging .container .battery .battery_icon #battery_icon_width {
+  background: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
+}
+
+.charging .container .battery #time_left {
+  display: block;
+}
+
+.charging .container .charging_animation {
+  display: block;
+}
+
+@media only screen and (max-width: 600px) {
+  .container .charging_animation .start {
+    bottom: 10vh;
+  }
 }
 /*# sourceMappingURL=main.css.map */

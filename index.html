@@ -3,20 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#000">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Web based Always On Display using Battery API" />
+    <meta name="keywords" content="Always On Display, AOD, Battery API, JavaScript, JS" />
+    <meta property="og:title" content="Always On Display" />
+    <meta property="og:description" content="Web based Always On Display using Battery API" />
+    <meta name="og:image" content="https://mayank-01-ms.github.io/images/vector.jpeg" />
+    <meta property="og:type" content="web app" />
+    <meta property="og:url" content="https://mayank-01-ms.github.io/aod">
+    <meta name="og:site_name" content="Always On Display" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/jpeg" href="https://mayank-01-ms.github.io/images/vector.jpeg" />
     <link rel="stylesheet" href="styles/main.css">
     <title>Always on display</title>
 </head>
-<body>
+<body class="charging">
     <div class="container">
         <div class="name">M</div>
-        <div id="time"><span class="blink">:</span>41</div>
+        <div id="time"></div>
         <div id="date"></div>
         <div class="battery">
             <div class="battery_icon">
                 <div id="battery_icon_width"></div>
             </div>
             <div id="battery_level"></div>
+            <div id="time_left"></div>
+        </div>
+        <div class="charging_animation">
+            <div class="start"></div>
         </div>
     </div>
 </body>

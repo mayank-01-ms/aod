@@ -2,7 +2,8 @@
 
 $bgColor: #000;
 $textH: #fff;
-$gradient: linear-gradient(180deg, #fc5296 0%, #f67062 74%); ;
+$gradient: linear-gradient(180deg, #fc5296 0%, #f67062 74%); 
+$chargingGradient: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
 
 *{
     margin: 0;
@@ -14,7 +15,9 @@ body{
     background-color: $bgColor;
     color: $textH;
     height: 100vh;
+    overflow: hidden;
     font-family: 'Roboto', sans-serif;
+    user-select: none;
 }
 
 .container{
@@ -52,6 +55,8 @@ body{
     }
 
     .battery{
+        text-align: center;
+
         .battery_icon{
             margin-top: 1rem;
             width: 90px;
@@ -84,7 +89,95 @@ body{
         }
         #battery_level{
             margin-top: 5px;
-            text-align: center;
+        }
+        #time_left{
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin: 0.25rem 0;
+            display: none;
+        }
+    }
+
+    .charging_animation{
+        display: none;
+        width: 15vh;
+        height: 35vh;
+        margin-top: 10px;
+        position: relative;
+        overflow: hidden;
+        
+        .charging_bubble{
+            border-radius: 50%;
+            background: $chargingGradient;
+            box-shadow: 0px 0px 2px #5aff15,
+                        0px 0px 10px #5aff15;
+            position: absolute;
+            animation: bubble 10s linear infinite, sideWays 2s ease-in-out infinite alternate;
+
+            @keyframes bubble {
+                0%{
+                    margin-top: 40vh;
+                }
+                100%{
+                    margin-top: -40vh;
+                }
+            }
+
+            @keyframes sideWays {
+                0%{
+                    margin-left: 0px;
+                }
+                100%{
+                    margin-left: 50px;
+                }
+            }
+        }
+
+        .start{
+            width: 15vh;
+            height: 5vw;
+            background: $chargingGradient;
+            filter: blur(10px);
+            border-top-left-radius: 15vh;
+            border-top-right-radius: 15vh;
+            position: absolute;
+            bottom: 0vh;
+        }
+    }
+}
+
+.charging{
+    .container{
+        .name{
+            background: $chargingGradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .battery{
+            .battery_icon{
+                box-shadow: inset 0px 0px 15px #00b712,
+                            0px 0px 15px #5aff15;
+
+                #battery_icon_width{
+                    background: $chargingGradient;
+                }
+            }
+            #time_left{
+                display: block;
+            }
+        }
+        .charging_animation{
+            display: block;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container{
+        .charging_animation{
+            .start{
+                bottom: 10vh;
+            }
         }
     }
 }
